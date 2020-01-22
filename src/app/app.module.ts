@@ -3,12 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DurationModule } from 'src/duration/duration.module';
-import { DurationPipe } from './duration.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DurationPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,

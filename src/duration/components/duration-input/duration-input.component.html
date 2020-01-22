@@ -1,6 +1,5 @@
-<input (input)="valueChangeEvent($event)"  [ngModel]="displayValue | duration">
-<!-- <input 
-matInput [ngModel]="value | duration" 
-(ngModelChange)="valueChangeEvent($event)"
-placeholder="00h 00m"
-/> -->
+<input 
+    (input)="valueChangeEvent($event)"  
+    [ngModel]="displayValue | duration"
+    class="invisible-caret"
+>
