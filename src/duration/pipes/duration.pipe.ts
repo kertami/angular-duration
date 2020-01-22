@@ -1,19 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
-export interface DurationMaskOption {
-  digitAmount: number;
-  suffix: string;
-}
-
-type DurationMask = DurationMaskOption[];
-
-type durationMaskOptionKeys = 'hour' | 'minute' | 'second';
-
-const durationMaskOptions: Record<durationMaskOptionKeys, DurationMaskOption> = {
-  'hour' : {digitAmount: 2, suffix: 'h'},
-  'minute' : {digitAmount: 2, suffix: 'm'},
-  'second' : {digitAmount: 2, suffix: 's'},
-};
+import { DurationMask } from '../model/DurationMask';
+import { durationMaskOptions } from '../model/DurationMaskOption';
 
 @Pipe({
   name: 'duration'
