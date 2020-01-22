@@ -7,13 +7,10 @@ import { durationMaskOptions } from '../model/DurationMaskOption';
 })
 export class DurationPipe implements PipeTransform {
 
-  transform(displayNumber: number): string {
-    // TODO move mask to parameter
+  transform(displayNumber: number, durationMask?: DurationMask): string {
     const defaultMask: DurationMask = [durationMaskOptions.hour, durationMaskOptions.minute, durationMaskOptions.second];
-
-    return formatDuration(displayNumber, defaultMask);
+    return formatDuration(displayNumber, durationMask || defaultMask);
   }
-
 }
 
 function formatDuration( durationValue: number, durationMask: DurationMask): string {
