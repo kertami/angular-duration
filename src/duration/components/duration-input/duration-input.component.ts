@@ -8,8 +8,7 @@ import { Time } from '@angular/common';
 })
 export class DurationInputComponent implements OnInit {
 
-  value = 0;
-
+  displayValue = 0;
 
   constructor() { }
 
@@ -18,6 +17,32 @@ export class DurationInputComponent implements OnInit {
 
   valueChangeEvent(event: any) {
     console.log(event);
-    this.value = 1;
+    if (isInsertEvent(event)) {
+      this.displayValue = this.displayValue + event.data;
+    }
+    if (isDeleteEvent(event)) {
+      this.displayValue = Math.floor(this.displayValue / 10);
+    }
+    console.log(this.displayValue);
   }
+}
+
+function isInsertEvent(event: any): boolean {
+
+  // inputTypes as defined by mozilla docs https://rawgit.com/w3c/input-events/v1/index.html#interface-InputEvent-Attributes
+  const insertEventTypes: string[] = [
+    'insertText'
+  ];
+
+  return insertEventTypes.includes(event.inputType);
+}
+
+function isDeleteEvent(event: any): boolean {
+
+  // inputTypes as defined by mozilla docs https://rawgit.com/w3c/input-events/v1/index.html#interface-InputEvent-Attributes
+  const deleteEventTypes: string[] = [
+    'deleteContentBackward'
+  ];
+
+  return deleteEventTypes.includes(event.inputType);
 }
