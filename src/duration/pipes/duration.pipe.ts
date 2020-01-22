@@ -43,18 +43,7 @@ function formatDuration( durationValue: number, durationMask: DurationMask): str
     displayText = formattedDurationOption + displayText;
   });
 
-  function getFormattedDurationOption(durationMaskOption: DurationMaskOption): string {
-    let formattedDurationOption = durationMaskOption.suffix;
-    for (let digit = 0; digit < durationMaskOption.digitAmount; digit++) {
-      formattedDurationOption = getLastDigit(durationValue) + formattedDurationOption;
-      durationValue = Math.floor(durationValue / 10);
-    }
-    formattedDurationOption = durationMaskOption.suffix + formattedDurationOption;
-    return formattedDurationOption;
-  }
-
-  displayText.slice(1); // Remove the whitespace in the front
-  return displayText;
+  return displayText.slice(1); // Remove the whitespace in front
 }
 
 function getLastDigit(number: number): number {
