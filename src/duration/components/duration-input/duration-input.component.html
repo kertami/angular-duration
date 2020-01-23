@@ -1,5 +1,6 @@
 <input 
     (input)="valueChangeEvent($event)"  
-    [ngModel]="displayValue | duration"
+    [ngModel]="displayValue | duration:durationMask"
     class="invisible-caret"
+    spellcheck="false"
 >

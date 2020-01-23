@@ -9,7 +9,7 @@ export class DurationPipe implements PipeTransform {
 
   transform(displayNumber: number, durationMask?: DurationMask): string {
     const defaultMask: DurationMask = [durationMaskOptions.hour, durationMaskOptions.minute, durationMaskOptions.second];
-    return formatDuration(displayNumber, durationMask || defaultMask);
+    return formatDuration(displayNumber, Object.assign([], durationMask || defaultMask));
   }
 }
 

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Time } from '@angular/common';
+import { DurationMask } from 'src/duration/model/DurationMask';
+import { durationMaskOptions } from 'src/duration/model/DurationMaskOption';
 
 @Component({
   selector: 'app-duration-input',
@@ -9,21 +11,31 @@ import { Time } from '@angular/common';
 export class DurationInputComponent implements OnInit {
 
   displayValue = 0;
+  durationMask: DurationMask = [durationMaskOptions.hour, durationMaskOptions.minute, durationMaskOptions.second];
+  maxDisplayValueLength = this.durationMask.reduce<number>((digitAmount, maskOption) => digitAmount + maskOption.digitAmount, 0);
 
-  constructor() { }
+  constructor(private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
 
   valueChangeEvent(event: any) {
-    console.log(event);
     if (isInsertEvent(event)) {
-      this.displayValue = this.displayValue + event.data;
+      if (this.displayValue.toString().length < this.maxDisplayValueLength) {
+        this.displayValue = this.displayValue + event.data;
+      }
     }
     if (isDeleteEvent(event)) {
       this.displayValue = Math.floor(this.displayValue / 10);
     }
-    console.log(this.displayValue);
+
+    this.refreshDisplayValue();
+  }
+
+  refreshDisplayValue() {
+    ++this.displayValue;
+    this.changeDetector.detectChanges();
+    --this.displayValue;
   }
 }
 
