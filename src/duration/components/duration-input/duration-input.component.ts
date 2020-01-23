@@ -32,6 +32,12 @@ export class DurationInputComponent implements OnInit {
     this.refreshDisplayValue();
   }
 
+  pasteEvent(event: any) {
+    const pastedText = event.clipboardData.getData('text');
+    const numberPattern = /\d+/g;
+    this.displayValue = pastedText.match(numberPattern);
+  }
+
   refreshDisplayValue() {
     ++this.displayValue;
     this.changeDetector.detectChanges();
