@@ -3,16 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DurationModule } from 'src/duration/duration.module';
-import { DurationPipe } from './duration.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DurationPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    DurationModule
+    DurationModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

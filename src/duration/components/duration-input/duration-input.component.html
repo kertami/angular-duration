@@ -1,6 +1,12 @@
-<input (input)="valueChangeEvent($event)"  [ngModel]="value | duration">
-<!-- <input 
-matInput [ngModel]="value | duration" 
-(ngModelChange)="valueChangeEvent($event)"
-placeholder="00h 00m"
-/> -->
+<mat-form-field class="example-full-width">
+
+<input
+    matInput
+    (input)="valueChangeEvent($event)"
+    (paste)="pasteEvent($event)"
+    [ngModel]="displayValue | duration:durationMask"
+    class="invisible-caret"
+    spellcheck="false"
+    placeholder="duration"
+>
+</mat-form-field>
