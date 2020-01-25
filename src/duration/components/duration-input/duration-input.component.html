@@ -2,9 +2,9 @@
 
 <input
     matInput
-    (input)="valueChangeEvent($event)"
+    [formControl]="dateControl"
+    [value]="dateControl.value | duration:durationMask"
     (paste)="pasteEvent($event)"
-    [ngModel]="displayValue | duration:durationMask"
     class="invisible-caret"
     spellcheck="false"
     placeholder="duration"
